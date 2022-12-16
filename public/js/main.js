@@ -7,7 +7,7 @@ addFoodItemBtn.addEventListener('click',addFoodItem)
 //deleteBtn.addEventListener('click', deleteFoodItem)
 
 Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deleteFoodItem)
+    el.addEventListener('click', removeFoodItem)
 })
 
 async function updateTarget(){
@@ -87,7 +87,7 @@ async function addFoodItem(){
     location.reload()
 }
 
-async function deleteFoodItem(){
+async function removeFoodItem(){
   
     let calories = this.previousSibling.previousElementSibling.innerText
     console.log(this.previousSibling.previousElementSibling.innerText)

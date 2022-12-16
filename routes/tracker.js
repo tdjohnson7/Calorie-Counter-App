@@ -9,5 +9,7 @@ router.post('/updateTarget', trackerController.updateTarget)
 // by Cy, added route to handle inserting a new food item to db
 router.post('/addFoodItem',trackerController.addFoodItem)
 
+router.put('/removeFoodItem', trackerController.removeFoodItem)
+
 
 module.exports = router

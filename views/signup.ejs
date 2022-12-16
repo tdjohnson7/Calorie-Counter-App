@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Counter Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+    
+    <section>
+        <form action="/signup" method="POST">
+            <fieldset>
+                <legend>Sign Up</legend>
+
+                <label for="userName">Username</label>
+                <input type="text" name="userName" placeholder="Username">
+
+                <label for="password">Password (at least 8 characters)</label>
+                <input type="password" name="password" placeholder="Password">
+
+                <label for="confirmPassword">Re-type password</label>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password">
+
+                <label for="userTargetCalories">Please enter desired target calories. Note: recommended 1600-2400/day for women and 2200-3200/day for men.</label>
+                <input type="text" name="targetCalories" placeholder="Daily target calories.">
+
+                <label></label> <!-- temporary solution for proper submit button allignment-->
+                <input type="submit">
+            </fieldset>
+        </form>
+    </section>
+
+</body>
+</html>

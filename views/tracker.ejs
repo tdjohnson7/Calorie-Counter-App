@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Previous code in the event something breaks -->
+    <!-- <h1>Target</h1>
+    <h3>
+        Current Calories: <%= dailyCalorie.sum %>
+    </h3>
+    <h3>
+        The current target is: <%= user.targetCalories %>
+    </h3> -->
+
+    <div class="flex flex-col flex justify-center">
+        <div class ="flex justify-center text-welcome-blue text-3xl md:text-4 lg:text-3xl text-center lg:text-center mb-6">
+          <strong>Current Calories: <%= dailyCalorie.sum %></strong>
+        </div>
+        <div class="flex justify-center text-welcome-blue text-3xl md:text-4 lg:text-2xl text-center lg:text-center mb-6">
+          <span>The current target is: <%= user.targetCalories %></span>
+        </div>
+    </div>
+
+    <!-- Original update calorie form -->
+ <!-- <form action="/tracker/updateTarget" method='POST'>
+
+        <input type="text" placeholder="Enter new calorie target" name='newTargetCal'>
+        <input type="submit">
+    </form>  -->
+
+    <div class="flex-auto w-96 justify-center flex-wrap gap-6  items-center max-w-md mx-auto py-8">
+      <div class="relative text-gray-700">
+        <form action="/tracker/updateTarget" method='POST'>
+          <input name='newTargetCal' class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="number" placeholder="Enter new calorie target"/>
+          <button type='submit' class="absolute inset-y-0 right-0 flex items-center px-4 font-bold text-white bg-emerald-600 rounded-r-lg hover:bg-emerald-500 focus:bg-emerald-700">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- below code needs made pretty :) by Cy -->
+<!-- by Cy: the below is just for testing with the main.js client side fetch code and the backend addFoodItem route -->
+    <!-- <input id="inputFood" type="text">
+    <button id="searchFoodBtn">Search</button> -->
+
+    <!-- new search form and button with original code above for reference in the event there is an error -->
+    <div class="flex-auto w-96 justify-center flex-wrap gap-6 items-center max-w-md mx-auto">
+        <div class="relative text-gray-700">
+            <input id="inputFood" class="w-full h-10 pl-3 pr-8 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" placeholder="Enter desired food"/>
+            <button id="searchFoodBtn" class="absolute inset-y-0 right-0 flex items-center px-4 font-bold text-white bg-emerald-600 rounded-r-lg hover:bg-emerald-500 focus:bg-emerald-700">Search</button>
+        </div>
+    </div>
+
+    <!-- <h2>Result:</h2>
+    <h3 id="outputFood"></h3>
+    <h3 id="outputCalorie"></h3> -->
+
+    <div class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow">
+        <ul class="flex flex-col divide-y w-full">
+          <li class="flex flex-row">
+            <div class="select-none cursor-pointer hover:bg-gray-50 flex flex-1 items-center p-4">
+              <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+                  <img id="foodThumb" alt="profil" src="images/apple.jpg" class="mx-auto object-cover rounded-full h-10 w-10" />
+              </div>
+              <div class="flex-1 pl-1">
+                <div class="font-medium dark:text-white" id="outputFood">Food item</div>
+              </div>
+              <div class="flex flex-row justify-center">
+                
+                <div class="text-gray-600 dark:text-gray-200 text-medium" id="outputCalorie">0</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+    <!-- <button class="" id="addFoodItem">Add Calories to Tracker</button> -->
+    <!-- adjusting button, keeping original code above in the event something breaks -->
+    <div class="flex justify-center flex-wrap gap-6">
+        <button id="addFoodItem" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-full ">Add Calories to Tracker</button>
+    </div>
+
+    <!-- <ul>
+        <% if(dailyCalorie.foodItems){ for(let i = 0; i < dailyCalorie.foodItems.length ; i++){ %>
+            <li>
+                <h4><%= String(dailyCalorie.foodItems[i].food) %></h4>
+                <span><%= dailyCalorie.foodItems[i].calories %></span>
+            </li>
+        <% } } %>
+    </ul> -->
+
+    <div class="flex flex-col container max-w-md mt-10 mx-auto w-full items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow">
+        <ul class="flex flex-col divide-y w-full">
+            <% if(dailyCalorie.foodItems){ for(let i = 0; i < dailyCalorie.foodItems.length ; i++){ %>            
+          <li class="flex flex-row">
+            <div id= 'fuckU' class="select-none cursor-pointer hover:bg-gray-50 flex flex-1 items-center p-4">
+              <!-- removed thumbnail from list -->
+              <!-- <div class="flex flex-col w-10 h-10 justify-center items-center mr-4">
+                <a href="#" class="block relative">
+                  <img alt="profil" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80" class="mx-auto object-cover rounded-full h-10 w-10" />
+                </a>
+              </div> -->
+              <div class="flex-1 pl-1">
+                <div class="food font-medium dark:text-white"><%= String(dailyCalorie.foodItems[i].food) %></div>
+              </div>
+              <div class="flex flex-row justify-center">
+                <div class="calories text-gray-600 dark:text-gray-200 text-medium"><%= dailyCalorie.foodItems[i].calories %></div>
+              </div>
+              <button class="del bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-full">Delete</button>
+            </div>
+          </li>
+          <% } } %>
+        </ul>
+      </div>
+
+    <!-- <a href="/logout">Logout</a> -->
+
+    <div class="flex justify-center flex-wrap gap-6">
+        <button>
+            <a href="/logout" class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-emerald-600 active:shadow-none shadow-lg bg-gradient-to-tr from-emerald-600 to-emerald-500 border-emerald-700 text-white">
+                <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded group-hover:w-20 group-hover:h-10 opacity-10"></span>
+                <span class="relative">Logout</span>
+            </a>
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

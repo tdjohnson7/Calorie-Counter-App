@@ -85,8 +85,8 @@ module.exports = {
             'date.day': currentDate,
             'date.month': currentMonth,
             'date.year': currentYear
-        },{ $inc:{ sum : -cals }, $pull: { "foodItems.calories" : cals, "foodItems.food": foodItem }})
+        },{ $inc:{ sum : -cals }, $pull: { foodItems:{ calories: cals, food: foodItem }}})
         console.log(dailyCalorie)
         res.redirect(301,('/tracker'))
-    }
+    },
 }

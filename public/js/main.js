@@ -105,5 +105,5 @@ async function removeFoodItem(){
         })
     })
     console.log(data)
-    //location.reload()
+    location.reload()
 }
